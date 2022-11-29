@@ -24,16 +24,19 @@ jobs:
           python-version: ${{ matrix.python-version }}
           activate-environment: myenv
       - name: Install dependencies
+        shell: bash -el {0}
         run: |
             conda info
             conda list
             conda install -c conda-forge --file requirements.txt
       - name: Build
+        shell: bash -el {0}
         run: |
             conda info
             conda list
             python setup.py install
       - name: Test
+        shell: bash -el {0}
         run: |
             conda info
             conda list
