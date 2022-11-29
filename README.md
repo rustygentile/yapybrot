@@ -18,5 +18,5 @@ Prerequisites:
 
 ```
 conda install -c conda-forge --file requirements.txt
-pip install .
+pip install -e .
 ```
