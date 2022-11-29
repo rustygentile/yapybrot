@@ -13,6 +13,7 @@ See [./examples](./examples) for usage.
 
 Prerequisites:
 
+* Python >= 3.8
 * Anaconda / Miniconda
 * CMake
 

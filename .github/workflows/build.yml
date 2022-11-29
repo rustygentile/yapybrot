@@ -32,7 +32,7 @@ jobs:
             conda install -c conda-forge --file requirements.txt
       - name: Build
         run: |
-            pip install -e .
+            pip install .
       - name: Test
         run: |
             pytest

@@ -4,6 +4,7 @@ from pybind11.setup_helpers import Pybind11Extension
 import sys
 import os
 import setuptools
+import pathlib
 
 __version__ = '0.0.1'
 
@@ -104,18 +105,35 @@ class BuildExt(build_ext):
         build_ext.build_extensions(self)
 
 
+here = pathlib.Path(__file__).parent.resolve()
+long_description = (here / 'README.md').read_text(encoding='utf-8')
+
 setup(
     name='yapybrot',
     version=__version__,
     author='Rusty Gentile',
-    author_email='rustygentile@gmail.com',
     url='https://github.com/rustygentile/yapybrot',
     description='Yet Another Python Mandelbrot',
-    long_description='',
+    long_description=long_description,
+
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: C++',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3 :: Only',
+    ],
+    keywords=['Mandelbrot', 'fractals'],
+
     package_dir={'': 'src'},
     packages=find_packages(where='src'),
     ext_modules=ext_modules,
     install_requires=['pybind11>=2.0.1', 'numpy', 'matplotlib', 'Pillow'],
+    python_requires='>=3.8, <4',
     cmdclass={'build_ext': BuildExt},
     zip_safe=False,
     test_suite='tests'
