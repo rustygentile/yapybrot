@@ -1,4 +1,4 @@
-from setuptools import setup, Extension, find_packages
+from setuptools import setup, find_packages
 from setuptools.command.build_ext import build_ext
 from pybind11.setup_helpers import Pybind11Extension
 import sys

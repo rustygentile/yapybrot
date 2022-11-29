@@ -1,21 +1,23 @@
-name: Python package
+name: Build
 
 on:
   push:
-    branches: [ "main", "CI" ]
-  pull_request:
-    branches: [ "main" ]
-    
+    branches:
+      - '*'
+      - '!main'
     
 jobs:
-  my-builder:
+  builder:
     name: Build (${{ matrix.python-version }}, ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash -el {0}
     strategy:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        python-version: ["3.9", "3.10"]
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
     steps:
       - uses: actions/checkout@v3
       - uses: conda-incubator/setup-miniconda@v2
@@ -24,20 +26,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
           activate-environment: myenv
       - name: Install dependencies
-        shell: bash -el {0}
         run: |
-            conda info
-            conda list
             conda install -c conda-forge --file requirements.txt
       - name: Build
-        shell: bash -el {0}
         run: |
-            conda info
-            conda list
-            python setup.py install
+            pip install .
       - name: Test
-        shell: bash -el {0}
         run: |
-            conda info
-            conda list
             pytest

@@ -2,9 +2,21 @@
 
 Yet Another Python Mandelbrot
 
-## Installation
+## Quickstart
+
+```
+pip install yapybrot
+```
+See [./examples](./examples) for usage.
+
+## Installation from Source
+
+Prerequisites:
+
+* Anaconda / Miniconda
+* CMake
 
 ```
 conda install -c conda-forge --file requirements.txt
-python setup.py install
+pip install .
 ```
