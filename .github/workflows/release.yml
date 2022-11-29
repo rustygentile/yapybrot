@@ -11,12 +11,13 @@ jobs:
   builder:
     name: Release (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash -el {0}
     strategy:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-      run:
-        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v3
       - uses: conda-incubator/setup-miniconda@v2
