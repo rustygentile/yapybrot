@@ -5,6 +5,7 @@ on:
     branches:
       - '*'
       - '!main'
+  workflow_dispatch:
     
 jobs:
   builder:
@@ -17,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
     steps:
       - uses: actions/checkout@v3
       - uses: conda-incubator/setup-miniconda@v2
@@ -26,11 +27,14 @@ jobs:
           python-version: ${{ matrix.python-version }}
           activate-environment: myenv
       - name: Install dependencies
+        shell: bash -el {0}
         run: |
             conda install -c conda-forge --file requirements.txt
       - name: Build
+        shell: bash -el {0}
         run: |
             pip install .
       - name: Test
+        shell: bash -el {0}
         run: |
             pytest
