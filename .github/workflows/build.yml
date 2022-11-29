@@ -31,8 +31,7 @@ jobs:
             conda install -c conda-forge --file requirements.txt
       - name: Build
         run: |
-            conda info
-            pip install -e .
+            python setup.py install
       - name: Test
         run: |
             pytest
