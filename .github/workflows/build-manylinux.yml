@@ -26,6 +26,7 @@ jobs:
       with:
         python-versions: 'cp310-cp310'
         system-packages: 'xtensor-python-dev'
+    - name: Inspect the results
       run: |
         ls build
         ls dist
