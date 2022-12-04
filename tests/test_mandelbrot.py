@@ -3,7 +3,6 @@ import pytest
 import yapybrot as m
 
 
-@pytest.mark.unit
 def test_mandel():
 
     w = 4
@@ -45,3 +44,7 @@ def test_mandel():
     ).astype(int)
 
     np.testing.assert_array_equal(res, expected)
+
+
+def test_should_fail():
+    assert False

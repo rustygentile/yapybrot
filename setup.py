@@ -1,12 +1,11 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Extension
 from setuptools.command.build_ext import build_ext
-from pybind11.setup_helpers import Pybind11Extension
 import sys
 import os
 import setuptools
 import pathlib
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 
 class get_pybind_include(object):
@@ -40,7 +39,7 @@ class get_numpy_include(object):
 
 
 ext_modules = [
-    Pybind11Extension(
+    Extension(
         '_yapybrot',
         ['src/yapybrot/mandelbrot.cpp'],
         include_dirs=[
