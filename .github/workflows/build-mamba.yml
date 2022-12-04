@@ -26,6 +26,7 @@ jobs:
           extra-specs: python=${{ matrix.python-version }}
           environment-file: false
           environment-name: myenv
+          channels: ['conda-forge']
       - name: Install dependencies
         run: |
             mamba install --file requirements.txt
