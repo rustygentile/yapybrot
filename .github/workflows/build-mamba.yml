@@ -25,6 +25,7 @@ jobs:
         with:
           extra-specs: python=${{ matrix.python-version }}
           environment-file: false
+          environment-name: myenv
       - name: Install dependencies
         run: |
             mamba install --file requirements.txt
