@@ -1,5 +1,4 @@
 name: Build
-description: Builds the project on Linux, Windows and MacOS
 
 on:
   workflow_dispatch:
