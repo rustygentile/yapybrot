@@ -114,7 +114,7 @@ setup(
     url='https://github.com/rustygentile/yapybrot',
     description='Yet Another Python Mandelbrot',
     long_description=long_description,
-
+    long_description_content_type="text/markdown",
     classifiers=[
         'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: MIT License',
