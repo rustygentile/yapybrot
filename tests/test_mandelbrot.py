@@ -1,46 +1,60 @@
 import numpy as np
 import pytest
-import yapybrot as m
+import yapybrot as ypb
 
 
-def test_mandel():
+class TestMandelbrots:
+    @pytest.fixture
+    def mandelbrot(self):
+        m = ypb.Mandelbrot()
+        m.width = 4
+        m.height = 4
+        m.xmin = -0.75
+        m.xmax = -0.76
+        m.ymin = 0.14
+        m.ymax = 0.16
+        return m
 
-    w = 4
-    h = 4
+    def test_result(self, mandelbrot):
+        result = mandelbrot.calculate()
+        expected = np.array(
+            [[[77, 23, 111, 255],
+              [76, 22, 108, 255],
+              [76, 22, 107, 255],
+              [75, 21, 106, 255]],
+             [[79, 25, 115, 255],
+              [77, 23, 111, 255],
+              [76, 22, 109, 255],
+              [76, 22, 108, 255]],
+             [[80, 26, 117, 255],
+              [79, 25, 114, 255],
+              [78, 24, 112, 255],
+              [77, 23, 111, 255]],
+             [[81, 26, 118, 255],
+              [79, 25, 115, 255],
+              [79, 25, 114, 255],
+              [78, 24, 113, 255]]])
 
-    xc = -0.74
-    yc = 0.15
-    size = 0.01
+        np.testing.assert_array_equal(result, expected)
 
-    mandel = m.Mandelbrot(width=w,
-                          height=h,
-                          pallette_name='twilight')
+    def test_update_palette_by_keyword(self, mandelbrot):
+        mandelbrot.calculate(cmap='hsv', max_iter=100)
+        assert mandelbrot.palette[0, 0] == 255
+        assert mandelbrot.palette.shape == (100, 4)
 
-    res = mandel.calculate(xmin=xc-size,
-                           xmax=xc+size,
-                           ymin=yc-size,
-                           ymax=yc+size)
+    def test_update_palette_by_attr(self, mandelbrot):
+        mandelbrot.cmap = 'hot'
+        mandelbrot.max_iter = 50
+        assert mandelbrot.palette[0, 0] == 10
+        assert mandelbrot.palette.shape == (50, 4)
 
-    expected = np.array(
-        [[[179, 198, 206],
-          [176, 196, 205],
-          [173, 195, 204],
-          [173, 195, 204]],
+    def test_user_palette(self, mandelbrot):
+        mandelbrot.palette = np.ones((256, 4))
+        assert mandelbrot.cmap == 'user'
 
-         [[167, 192, 202],
-          [101, 129, 189],
-          [147, 180, 198],
-          [82, 27, 120]],
-
-         [[122, 159, 194],
-          [225, 216, 225],
-          [124, 161, 194],
-          [105, 137, 190]],
-
-         [[225, 216, 226],
-          [225, 216, 226],
-          [225, 216, 226],
-          [225, 216, 226]]]
-    ).astype(int)
-
-    np.testing.assert_array_equal(res, expected)
+    def test_smoothing(self, mandelbrot):
+        res1 = mandelbrot.calculate()
+        res2 = mandelbrot.calculate(smoothing=False)
+        diff = res1 - res2
+        assert np.max(diff) == 2
+        assert np.min(diff) == -1

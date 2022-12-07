@@ -4,13 +4,13 @@ Yet Another Python Mandelbrot - a mixed language (Python & C++) project using co
 
 ## Installation 
 
-### Windows & MacOS 
+### Using pip (Windows & MacOS)
 
 ```
 pip install yapybrot
 ```
 
-### Installation from Source 
+### From Source (Linux) 
 
 Prerequisites: 
 
@@ -25,3 +25,7 @@ pip install .
 ```
 
 See [./examples](./examples) for usage. 
+
+## Gallery 
+
+![](./examples/zoom.gif)
