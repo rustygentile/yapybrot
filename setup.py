@@ -49,7 +49,10 @@ ext_modules = [
             get_numpy_include(),
             os.path.join(sys.prefix, 'include'),
             os.path.join(sys.prefix, 'Library', 'include'),
-            './bin/include'
+            './bin/include',
+            './bin/include/python3.8',
+            './bin/include/python3.9',
+            './bin/include/python3.10',
         ],
         language='c++'
     ),
@@ -123,8 +126,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.10'
         'Programming Language :: Python :: 3 :: Only',
     ],
     keywords=['Mandelbrot', 'fractals'],
