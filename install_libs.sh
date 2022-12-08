@@ -1,5 +1,3 @@
-pip install -r requirements.txt
-
 libs="pybind11 xtl xtensor xtensor-python"  
 for lib in $libs
 do
