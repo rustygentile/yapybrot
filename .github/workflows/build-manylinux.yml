@@ -15,7 +15,7 @@ jobs:
       with:
         python-versions: 'cp310-cp310'
         pre-build-command: '/usr/local/bin/python3.6 -m pip install numpy && sh ./install_libs.sh'
-        build-requires: 'numpy==1.23.5'
+        build-requires: 'numpy==1.23.5 pybind11==2.10.1'
     - name: Inspect results
       run: |
         ls dist
