@@ -1,0 +1,13 @@
+[submodule "lib/pybind11"]
+	path = lib/pybind11
+	url = ../../pybind/pybind11
+	branch = stable
+[submodule "lib/xtl"]
+	path = lib/xtl
+	url = ../../xtensor-stack/xtl
+[submodule "lib/xtensor"]
+	path = lib/xtensor
+	url = ../../xtensor-stack/xtensor
+[submodule "lib/xtensor-python"]
+	path = lib/xtensor-python
+	url = ../../xtensor-stack/xtensor-python

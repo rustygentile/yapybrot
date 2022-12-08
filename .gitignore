@@ -5,3 +5,5 @@ dist/
 build/
 *.py[cod]
 __pycache__/
+/bin/*
+!/bin/.gitkeep
