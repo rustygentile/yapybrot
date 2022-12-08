@@ -3,3 +3,4 @@ pillow==9.2.0
 matplotlib==3.6.2
 pytest==7.1.2
 twine==4.0.1
+pybind11==2.10.1
