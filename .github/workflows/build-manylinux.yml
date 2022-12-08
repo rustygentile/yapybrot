@@ -16,7 +16,7 @@ jobs:
         python-versions: 'cp38-cp38 cp39-cp39 cp310-cp310'
         pre-build-command: 'sh ./install_libs.sh'
     - name: Upload wheel artifacts
-    - uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
         name: wheel-artifacts
         path: dist/*-manylinux*.whl
@@ -37,10 +37,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Download wheel artifacts
-        - uses: actions/download-artifact@v3
-          with:
-            name: wheel-artifacts
-            path: dist
+        uses: actions/download-artifact@v3
+        with:
+          name: wheel-artifacts
+          path: dist
       - name: Install wheels
         run: |
           pip install --no-index --find-links ./dist yapybrot 
