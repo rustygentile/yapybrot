@@ -1,8 +1,9 @@
 CPP_LIBS="pybind11 xtl xtensor xtensor-python"  
 
 for PV in "cp38-cp38 3.8" "cp39-cp39 3.9" "cp310-cp310 3.10"
-PY_VER=( $PV )
 do
+	PY_VER=( $PV )
+	
 	# Install python libraries
 	/opt/python/${PY_VER[0]}/bin/python -m pip install -r requirements.txt
 	
