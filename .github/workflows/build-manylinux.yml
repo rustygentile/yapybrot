@@ -21,6 +21,9 @@ jobs:
     - name: Build C++ libraries
       run: |
         ./build_libs.sh
+    - name: Install yapybrot
+      run: |
+        pip install .
     - name: Build manylinux Python wheels
       uses: RalfG/python-wheels-manylinux-build@v0.6.0-manylinux2014_x86_64
       with:
