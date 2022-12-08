@@ -14,7 +14,8 @@ jobs:
       uses: RalfG/python-wheels-manylinux-build@v0.6.0-manylinux2014_x86_64
       with:
         python-versions: 'cp310-cp310'
-        pre-build-command: 'python -m pip install -r requirements.txt && sh ./install_libs.sh'
+        pre-build-command: '/opt/python/cp310-cp310/bin/pip install -r requirements.txt && sh ./install_libs.sh'
+        build-requires: 'numpy==1.23.5'
     - name: Inspect results
       run: |
         ls dist
