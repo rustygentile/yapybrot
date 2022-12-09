@@ -3,7 +3,6 @@ from setuptools.command.build_ext import build_ext
 import sys
 import os
 import setuptools
-import pathlib
 
 __version__ = '0.0.3'
 
@@ -108,8 +107,8 @@ class BuildExt(build_ext):
         build_ext.build_extensions(self)
 
 
-here = pathlib.Path(__file__).parent.resolve()
-long_description = (here / 'README.md').read_text(encoding='utf-8')
+long_description = 'Yet Another Python Mandelbrot - a mixed language ' \
+                   '(Python & C++) project'
 
 setup(
     name='yapybrot',
@@ -118,7 +117,6 @@ setup(
     url='https://github.com/rustygentile/yapybrot',
     description='Yet Another Python Mandelbrot',
     long_description=long_description,
-    long_description_content_type="text/markdown",
     classifiers=[
         'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: MIT License',

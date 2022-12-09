@@ -13,13 +13,13 @@ jobs:
   build_conda_matrix:
     name: Build with conda (Windows & MacOS)
     uses: ./.github/workflows/build-conda.yml 
-  build_manylinux:
+  build_manylinux_matrix:
     name: Build with manylinux
     uses: ./.github/workflows/build-manylinux.yml
     
   release_source:
     name: Release Source
-    needs: [build_conda_matrix, build_manylinux]
+    needs: [build_conda_matrix, build_manylinux_matrix]
     runs-on: "ubuntu-latest"
     defaults:
       run:
@@ -46,7 +46,7 @@ jobs:
     
   release_windows_mac_wheels:
     name: Release Wheel (${{ matrix.python-version }}, ${{ matrix.os }})
-    needs: release_source
+    needs: [build_conda_matrix, build_manylinux_matrix]
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -76,7 +76,7 @@ jobs:
   
   release_manylinux_wheels:
     name: Release manylinux Wheels
-    needs: release_source
+    needs: [build_conda_matrix, build_manylinux_matrix]
     runs-on: "unbunu-latest"
     defaults:
       run:

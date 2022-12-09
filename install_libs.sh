@@ -1,6 +1,8 @@
+# Builds the C++ libraries and installs them in ./bin. 
+#
 # Options:
 # -m,     build on manylinux for python versions 3.8, 3.9, 3.10
-# [none], build only for current active python version
+# [none], build without manually specifying python paths
 
 mflag=0
 while getopts "m" flag
