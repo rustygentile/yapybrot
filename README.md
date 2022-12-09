@@ -36,12 +36,12 @@ pip install .
 ## Gallery 
 
 <p float="left">
-  <img src="./examples/static1.png" width="300" />
-  <img src="./examples/static2.png" width="300" /> 
-  <img src="./examples/static3.png" width="300" />
+  <img src="./examples/static1.png" width="250" />
+  <img src="./examples/static2.png" width="250" /> 
+  <img src="./examples/static3.png" width="250" />
 </p>
 
 <p float="left">
-  <img src="./examples/zoom1.gif" width="450" />
-  <img src="./examples/zoom2.gif" width="450" /> 
+  <img src="./examples/zoom1.gif" width="375" />
+  <img src="./examples/zoom2.gif" width="375" /> 
 </p>
