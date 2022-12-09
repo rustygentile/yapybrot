@@ -93,7 +93,7 @@ jobs:
           path: dist
       - name: Install twine
         run: |
-          pip intall twine==4.0.1
+          pip install twine==4.0.1
       - name: Publish manylinux Wheels
         run: |
           twine upload dist/*.whl
