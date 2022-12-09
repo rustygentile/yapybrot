@@ -1,11 +1,11 @@
-name: Build
+name: Build with conda
 
 on:
   workflow_dispatch:
   workflow_call:
 
 jobs:
-  builder:
+  build_conda:
     name: Build (${{ matrix.python-version }}, ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     defaults:

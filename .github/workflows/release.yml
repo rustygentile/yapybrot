@@ -10,13 +10,16 @@ env:
   TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
 
 jobs:
-  build_full_matrix:
-    name: Build 
-    uses: ./.github/workflows/build.yml 
+  build_conda_matrix:
+    name: Build with conda (Windows & MacOS)
+    uses: ./.github/workflows/build-conda.yml 
+  build_manylinux:
+    name: Build with manylinux
+    uses: ./.github/workflows/build-manylinux.yml
     
   release_source:
     name: Release Source
-    needs: build_full_matrix
+    needs: [build_conda_matrix, build_manylinux]
     runs-on: "ubuntu-latest"
     defaults:
       run:
@@ -41,7 +44,7 @@ jobs:
         run: |
             twine upload dist/*.tar.gz
     
-  release_wheels:
+  release_windows_mac_wheels:
     name: Release Wheel (${{ matrix.python-version }}, ${{ matrix.os }})
     needs: release_source
     runs-on: ${{ matrix.os }}
@@ -70,3 +73,27 @@ jobs:
       - name: Publish Wheel
         run: |
             twine upload dist/*.whl
+  
+  release_manylinux_wheels:
+    name: Release manylinux Wheels
+    needs: release_source
+    runs-on: "unbunu-latest"
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - name: Setup python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.10'
+      - name: Download wheel artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: wheel-artifacts
+          path: dist
+      - name: Install twine
+        run: |
+          pip intall twine==4.0.1
+      - name: Publish manylinux Wheels
+        run: |
+          twine upload dist/*.whl

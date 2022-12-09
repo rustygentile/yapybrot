@@ -25,7 +25,7 @@ conda activate yapybrotenv
 pip install .
 ```
 
-### Option 2 - Build C++ Libraries from Source
+### Option 2 - Build C++ Libraries from Source (Linux only)
 
 ```
 pip install -r requirements.txt
