@@ -41,11 +41,14 @@ jobs:
         with:
           name: wheel-artifacts
           path: dist
+      - name: Install dependencies
+        run: |
+          # Do this as a separate step... 
+          pip install -r requirements.txt 
       - name: Install wheels
         run: |
-          ls dist
+          # ...since we don't want to accidentally pull from PyPI here
           pip install --no-index --find-links ./dist yapybrot 
       - name: Test wheels
         run: |
-          pip install pytest
           pytest

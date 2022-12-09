@@ -2,21 +2,22 @@
 
 Yet Another Python Mandelbrot - a mixed language (Python & C++) project using continuous integration 
 
-## Installation 
-
-### Using pip (Windows & MacOS)
+## Quickstart
 
 ```
 pip install yapybrot
 ```
 
-### From Source (Linux) 
+See [examples](./examples) for usage. 
+
+## Installing from Source 
 
 Prerequisites: 
 
 * Python >= 3.8 
-* Anaconda / Miniconda 
 * CMake 
+
+### Option 1 - Via Conda
 
 ```
 conda env create -f environment.yml
@@ -24,7 +25,13 @@ conda activate yapybrotenv
 pip install .
 ```
 
-See [./examples](./examples) for usage. 
+### Option 2 - Build C++ Libraries from Source
+
+```
+pip install -r requirements.txt
+./install_libs.sh
+pip install .
+```
 
 ## Gallery 
 
