@@ -43,9 +43,9 @@ jobs:
           path: dist
       - name: Install wheels
         run: |
+          ls dist
           pip install --no-index --find-links ./dist yapybrot 
       - name: Test wheels
         run: |
           pip install pytest
           pytest
-          ls dist

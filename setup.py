@@ -50,9 +50,9 @@ ext_modules = [
             os.path.join(sys.prefix, 'include'),
             os.path.join(sys.prefix, 'Library', 'include'),
             './bin/include',
-            './bin/include/python3.8',
-            './bin/include/python3.9',
-            './bin/include/python3.10',
+            './bin/python3.8/include',
+            './bin/python3.9/include',
+            './bin/python3.10/include',
         ],
         language='c++'
     ),
