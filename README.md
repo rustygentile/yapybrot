@@ -8,7 +8,7 @@ Yet Another Python Mandelbrot - a mixed language (Python & C++) project using co
 pip install yapybrot
 ```
 
-See [examples](./examples) for usage. 
+See the [examples](./examples) for usage. 
 
 ## Installing from Source 
 
@@ -35,4 +35,13 @@ pip install .
 
 ## Gallery 
 
-![](./examples/zoom.gif)
+<p float="left">
+  <img src="./examples/static1.png" width="300" />
+  <img src="./examples/static2.png" width="300" /> 
+  <img src="./examples/static3.png" width="300" />
+</p>
+
+<p float="left">
+  <img src="./examples/zoom1.gif" width="450" />
+  <img src="./examples/zoom2.gif" width="450" /> 
+</p>

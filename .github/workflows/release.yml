@@ -77,7 +77,7 @@ jobs:
   release_manylinux_wheels:
     name: Release manylinux Wheels
     needs: [build_conda_matrix, build_manylinux_matrix]
-    runs-on: "unbunu-latest"
+    runs-on: "unbuntu-latest"
     defaults:
       run:
         shell: bash -el {0}
